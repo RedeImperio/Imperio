@@ -1,0 +1,32 @@
+# Arquivos compilados e gerados
+/target/
+/bin/
+/build/
+
+# Arquivos de configuração IDE
+/.idea/
+/.vscode/
+*.iml
+
+# Dependências e bibliotecas
+/libs/
+/build/libs/
+
+# Logs e arquivos temporários
+/logs/
+/temp/
+
+# Arquivos de dados
+/world/
+/playerdata/
+/stats/
+/region/
+
+# Arquivos de backup
+*.bak
+*.swp
+
+# Arquivos sensíveis ou exclusivos do ambiente local
+.env
+config.yml
+secrets.properties
