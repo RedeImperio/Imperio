@@ -2,6 +2,7 @@ package top.redeimperio.imperiostaff;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import top.redeimperio.imperiostaff.commands.FreezeCommand;
 import top.redeimperio.imperiostaff.commands.StaffChatCommand;
 
 public final class ImperioStaff extends JavaPlugin {
@@ -23,5 +24,7 @@ public final class ImperioStaff extends JavaPlugin {
 
     public void EnableCommands(){
         getCommand("sc").setExecutor(new StaffChatCommand());
+        getCommand("freeze").setExecutor(new FreezeCommand());
+
     }
 }
