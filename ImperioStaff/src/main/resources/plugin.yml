@@ -1,0 +1,4 @@
+name: ImperioStaff
+version: '${project.version}'
+main: top.redeimperio.imperiostaff.ImperioStaff
+api-version: 1.19
