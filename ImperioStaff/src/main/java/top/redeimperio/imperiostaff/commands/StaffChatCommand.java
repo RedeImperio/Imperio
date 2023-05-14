@@ -18,13 +18,13 @@ public class StaffChatCommand implements CommandExecutor {
 
         // Verificar a permissão do jogador
         if (!player.hasPermission("imperio.staff")) {
-            player.sendMessage("Você não tem permissão para executar este comando.");
+            player.sendMessage("§cVocê não tem permissão para executar este comando.");
             return true;
         }
 
         // Verificar se a mensagem foi fornecida
         if (args.length == 0) {
-            player.sendMessage("Uso incorreto do comando. Utilize /sc <mensagem>");
+            player.sendMessage("§dUtilize /sc <mensagem>");
             return true;
         }
 
@@ -38,7 +38,7 @@ public class StaffChatCommand implements CommandExecutor {
         // Enviar mensagem aos staffs online
         for (Player staff : player.getServer().getOnlinePlayers()) {
             if (staff.hasPermission("imperio.staff")) {
-                staff.sendMessage("[StaffChat] " + player.getName() + ": " + message);
+                staff.sendMessage("§9[StaffChat]§d " + player.getName() + ": " + message);
             }
         }
 

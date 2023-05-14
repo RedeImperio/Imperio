@@ -2,3 +2,8 @@ name: ImperioStaff
 version: '${project.version}'
 main: top.redeimperio.imperiostaff.ImperioStaff
 api-version: 1.19
+commands:
+  sc:
+    description: Envia uma mensagem para todos os staffs online.
+    permission: imperio.staff
+    aliases: [staffchat]
