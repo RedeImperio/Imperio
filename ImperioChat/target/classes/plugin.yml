@@ -1,0 +1,4 @@
+name: ImperioChat
+version: '1.0-SNAPSHOT'
+main: top.redeimperio.imperiochat.ImperioChat
+api-version: 1.19

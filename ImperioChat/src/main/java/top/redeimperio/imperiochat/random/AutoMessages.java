@@ -2,20 +2,18 @@ package top.redeimperio.imperiochat.random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.plugin.java.JavaPlugin;
+import top.redeimperio.imperiochat.ImperioChat;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class AutoMessages extends JavaPlugin {
+public class AutoMessages {
 
     private List<String> messages = new ArrayList<>();
-    private Random random = new Random();
+    private int currentIndex = 0;
     private int taskId;
 
-    @Override
-    public void onEnable() {
+    public void RunAutoMessages() {
         // Carregar as mensagens do arquivo de configuração
         loadMessages();
 
@@ -23,15 +21,9 @@ public class AutoMessages extends JavaPlugin {
         startMessageTask();
     }
 
-    @Override
-    public void onDisable() {
-        // Cancelar a tarefa de envio de mensagens ao desativar o plugin
-        cancelMessageTask();
-    }
-
     private void loadMessages() {
         // Carregar as mensagens do arquivo de configuração ou definir mensagens padrão
-        List<String> configMessages = getConfig().getStringList("messages");
+        List<String> configMessages = ImperioChat.Instance.getConfig().getStringList("messages");
 
         if (configMessages != null && !configMessages.isEmpty()) {
             messages.addAll(configMessages);
@@ -45,29 +37,35 @@ public class AutoMessages extends JavaPlugin {
 
     private void startMessageTask() {
         // Agendar uma tarefa para enviar uma mensagem a cada 30 segundos
-        taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
-            // Selecionar uma mensagem aleatória
-            String message = getRandomMessage();
+        taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(ImperioChat.Instance, () -> {
+            // Verificar se há mensagens disponíveis
+            if (!messages.isEmpty()) {
+                // Obter a mensagem atual
+                String message = messages.get(currentIndex);
 
-            // Enviar a mensagem para todos os jogadores online
-            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
+                // Enviar a mensagem para todos os jogadores online
+                Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
+
+                // Incrementar o índice da mensagem
+                currentIndex++;
+
+                // Verificar se o índice atingiu o tamanho máximo da lista de mensagens
+                if (currentIndex >= messages.size()) {
+                    // Reiniciar o índice para a primeira mensagem
+                    currentIndex = 0;
+                }
+            }
         }, 0, 30 * 20); // 30 segundos (em ticks)
 
         // Registrar uma mensagem no console informando que a tarefa foi iniciada
-        getLogger().info("Tarefa de mensagens automáticas iniciada.");
+        ImperioChat.Instance.getLogger().info("Tarefa de mensagens automáticas iniciada.");
     }
 
-    private void cancelMessageTask() {
+    public void cancelMessageTask() {
         // Cancelar a tarefa de envio de mensagens
         Bukkit.getScheduler().cancelTask(taskId);
 
         // Registrar uma mensagem no console informando que a tarefa foi cancelada
-        getLogger().info("Tarefa de mensagens automáticas cancelada.");
-    }
-
-    private String getRandomMessage() {
-        // Selecionar uma mensagem aleatória da lista de mensagens
-        int index = random.nextInt(messages.size());
-        return messages.get(index);
+        ImperioChat.Instance.getLogger().info("Tarefa de mensagens automáticas cancelada.");
     }
 }
