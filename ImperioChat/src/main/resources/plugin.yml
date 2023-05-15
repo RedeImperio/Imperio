@@ -1,0 +1,4 @@
+name: ImperioChat
+version: '${project.version}'
+main: top.redeimperio.imperiochat.ImperioChat
+api-version: 1.19
