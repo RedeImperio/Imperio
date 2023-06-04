@@ -30,12 +30,16 @@ public class AutoMessages {
         List<String> configMessages = config.getStringList("messages");
 
         if (configMessages != null && !configMessages.isEmpty()) {
-            messages.addAll(configMessages);
+            // Processar cada mensagem no arquivo de configuração
+            for (String configMessage : configMessages) {
+                // Adicionar a mensagem com a cor ao array de mensagens
+                messages.add(ChatColor.translateAlternateColorCodes('&', configMessage));
+            }
         } else {
             // Definir mensagens padrão caso o arquivo de configuração não tenha sido configurado
-            messages.add("Default 1");
-            messages.add("Default 2");
-            messages.add("Default 3");
+            messages.add("&aBem-vindo ao servidor!");
+            messages.add("&bDivirta-se jogando!");
+            messages.add("&cLembre-se de respeitar as regras.");
         }
     }
 
