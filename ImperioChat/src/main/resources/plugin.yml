@@ -2,3 +2,7 @@ name: ImperioChat
 version: '${project.version}'
 main: top.redeimperio.imperiochat.ImperioChat
 api-version: 1.19
+commands:
+  g:
+    description: Chat global
+    usage: /g <mensagem>

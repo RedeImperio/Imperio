@@ -2,6 +2,7 @@ package top.redeimperio.imperiochat.random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 import top.redeimperio.imperiochat.ImperioChat;
 
 import java.util.ArrayList;
@@ -22,16 +23,19 @@ public class AutoMessages {
     }
 
     private void loadMessages() {
-        // Carregar as mensagens do arquivo de configuração ou definir mensagens padrão
-        List<String> configMessages = ImperioChat.Instance.getConfig().getStringList("messages");
+        // Obter o arquivo de configuração
+        FileConfiguration config = ImperioChat.Instance.getConfig();
+
+        // Carregar as mensagens do arquivo de configuração
+        List<String> configMessages = config.getStringList("messages");
 
         if (configMessages != null && !configMessages.isEmpty()) {
             messages.addAll(configMessages);
         } else {
             // Definir mensagens padrão caso o arquivo de configuração não tenha sido configurado
-            messages.add("Bem-vindo ao servidor!");
-            messages.add("Divirta-se jogando!");
-            messages.add("Lembre-se de respeitar as regras.");
+            messages.add("Default 1");
+            messages.add("Default 2");
+            messages.add("Default 3");
         }
     }
 
