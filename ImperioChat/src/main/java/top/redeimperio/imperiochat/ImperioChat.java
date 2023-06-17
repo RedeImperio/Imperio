@@ -24,7 +24,6 @@ public final class ImperioChat extends JavaPlugin {
         getServer().getPluginManager().registerEvents(chatManager, this);
         getCommand("g").setExecutor(chatManager);
 
-
     }
 
     @Override
