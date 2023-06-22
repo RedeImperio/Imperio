@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ImperioLobby:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ImperioLobby_jar</output-path>
+    <root id="archive" name="ImperioLobby.jar">
+      <element id="module-output" name="ImperioLobby" />
+    </root>
+  </artifact>
+</component>

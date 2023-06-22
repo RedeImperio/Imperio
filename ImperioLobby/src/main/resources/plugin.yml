@@ -1,0 +1,17 @@
+name: ImperioLobby
+version: '${project.version}'
+main: top.redeimperio.imperiolobby.ImperioLobby
+api-version: 1.19
+commands:
+  lobby:
+    description: Teleporta o jogador para o lobby
+    usage: /lobby
+    aliases:
+      - spawn
+      - hub
+  setlobby:
+    description: Seta o Lobby para as coordenadas do jogador
+    usage: /setlobby
+    aliases:
+      - setspawn
+      - sethub
