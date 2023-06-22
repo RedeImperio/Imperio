@@ -7,8 +7,6 @@ import top.redeimperio.imperiolobby.commands.SetLobby;
 import top.redeimperio.imperiolobby.listeners.PlayerJoinListener;
 import top.redeimperio.imperiolobby.listeners.PlayerMoveListener;
 
-import java.io.Console;
-
 public final class ImperioLobby extends JavaPlugin {
 
     @Override
