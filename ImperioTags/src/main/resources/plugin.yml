@@ -1,0 +1,12 @@
+name: ImperioTags
+version: '1.0-SNAPSHOT'
+main: top.redeimperio.imperiotags.ImperioTags
+api-version: 1.19
+description: Plugin de tags para jogadores
+depend: [PlaceholderAPI]
+authors:
+  - Trivalent
+commands:
+  tag:
+    description: Comando para definir a tag do jogador
+    usage: /tag <nome>

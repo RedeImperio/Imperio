@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ImperioTags:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ImperioTags_jar</output-path>
+    <root id="archive" name="ImperioTags.jar">
+      <element id="module-output" name="ImperioTags" />
+    </root>
+  </artifact>
+</component>
