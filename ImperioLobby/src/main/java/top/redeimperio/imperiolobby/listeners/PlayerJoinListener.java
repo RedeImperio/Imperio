@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 
 public class PlayerJoinListener implements Listener {
@@ -15,6 +16,7 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
         String playerName = player.getName();
 
+        event.setJoinMessage("");
         if (player.hasPermission("lobby.fly")) {
             player.setAllowFlight(true);
             player.setFlying(true);
@@ -36,6 +38,10 @@ public class PlayerJoinListener implements Listener {
             String prefix = getRankPrefix(highestRankPermission);
             Bukkit.broadcastMessage(prefix + " " + playerName + " §6entrou no lobby!");
         }
+    }
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event){
+        event.setQuitMessage("");
     }
 
     private String getHighestRankPermission(Player player) {
