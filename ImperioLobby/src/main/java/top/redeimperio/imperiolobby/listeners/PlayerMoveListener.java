@@ -11,11 +11,6 @@ import top.redeimperio.imperiolobby.ImperioLobby;
 
 public class PlayerMoveListener implements Listener {
 
-    private FileConfiguration config;
-
-    public PlayerMoveListener(FileConfiguration config) {
-        this.config = config;
-    }
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
@@ -28,6 +23,8 @@ public class PlayerMoveListener implements Listener {
 
             if (lobbyLocation != null) {
                 player.teleport(lobbyLocation);
+            }else{
+                player.sendMessage("§cO lobby não foi definido. Reporte isso a Staff!");
             }
         }
     }

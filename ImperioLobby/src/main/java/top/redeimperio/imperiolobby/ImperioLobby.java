@@ -18,12 +18,13 @@ public final class ImperioLobby extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        config = getConfig();
 
         ConsoleCommandSender console = Bukkit.getConsoleSender();
         console.sendMessage("§aImperioLobby iniciado com sucesso");
         Bukkit.dispatchCommand(console, "difficulty peaceful");
         // Registro dos eventos
-        getServer().getPluginManager().registerEvents(new PlayerMoveListener(getConfig()), this);
+        getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
 
         // Registro dos comandos
