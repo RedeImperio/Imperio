@@ -1,6 +1,7 @@
 package top.redeimperio.imperiolobby.commands;
 
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -32,6 +33,7 @@ public class Lobby implements CommandExecutor {
 
         player.teleport(new Location(player.getWorld(), x, y, z, yaw, pitch));
         player.sendMessage("§aVocê foi teleportado para o lobby!");
+        player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1.0f, 1.0f);
 
         return true;
     }

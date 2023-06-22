@@ -18,7 +18,7 @@ public final class ImperioLobby extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        config = getConfig();
+        LoadConfig();
 
         ConsoleCommandSender console = Bukkit.getConsoleSender();
         console.sendMessage("§aImperioLobby iniciado com sucesso");
@@ -29,13 +29,18 @@ public final class ImperioLobby extends JavaPlugin {
 
         // Registro dos comandos
         getCommand("lobby").setExecutor(new Lobby(getConfig()));
-        getCommand("setlobby").setExecutor(new SetLobby(getConfig()));
+        getCommand("setlobby").setExecutor(new SetLobby());
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         Bukkit.getConsoleSender().sendMessage("§cDesligando ImperioLobby");
+    }
+
+    void LoadConfig(){
+        saveDefaultConfig();
+        config = getConfig();
     }
 
     public Location getLobbyLocation(Player player) {

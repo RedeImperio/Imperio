@@ -6,14 +6,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import top.redeimperio.imperiolobby.ImperioLobby;
 
 public class SetLobby implements CommandExecutor {
 
-    private FileConfiguration config;
 
-    public SetLobby(FileConfiguration config) {
-        this.config = config;
-    }
+    FileConfiguration config;
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -29,12 +27,13 @@ public class SetLobby implements CommandExecutor {
         float yaw = player.getLocation().getYaw();
         float pitch = player.getLocation().getPitch();
 
+        config = ImperioLobby.instance.getConfig();
         config.set("lobby.x", x);
         config.set("lobby.y", y);
         config.set("lobby.z", z);
         config.set("lobby.yaw", yaw);
         config.set("lobby.pitch", pitch);
-
+        ImperioLobby.instance.saveConfig();
         player.sendMessage("§eA posição atual foi definida como o lobby!");
 
         return true;
