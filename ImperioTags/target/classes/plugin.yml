@@ -10,3 +10,6 @@ commands:
   tag:
     description: Comando para definir a tag do jogador
     usage: /tag <nome>
+  tags:
+    description: Retorna a lista de tags
+    usage: /tags

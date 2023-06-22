@@ -1,23 +1,31 @@
 package top.redeimperio.imperiolobby.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerChatEvent;
+import top.redeimperio.imperiotags.ImperioTags;
+import top.redeimperio.imperiotags.Tag;
 
 public class PlayerChatListener implements Listener {
-
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent event){
+    public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         String message = event.getMessage();
 
-        // Altere o formato da mensagem para "Nickname: mensagem"
-        String formattedMessage = "§7" + playerName + ": " + message;
+        // Obtém a instância do plugin de tags
+        ImperioTags tagsPlugin = (ImperioTags) Bukkit.getPluginManager().getPlugin("ImperioTags");
 
-        // Defina a mensagem formatada para o evento
-        event.setMessage(formattedMessage);
+        // Obtém a tag do jogador
+        Tag playerTag = tagsPlugin.getPlayerTag(player.getUniqueId());
+
+        // Verifica se o jogador possui uma tag
+        if (playerTag != null) {
+            String formattedMessage = playerTag.getPrefix() + " " + playerName + ": §7" + message;
+            event.setCancelled(true);
+            Bukkit.broadcastMessage(formattedMessage);
+        }
     }
 }

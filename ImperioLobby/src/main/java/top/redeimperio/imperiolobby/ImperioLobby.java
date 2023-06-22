@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.redeimperio.imperiolobby.commands.Lobby;
 import top.redeimperio.imperiolobby.commands.SetLobby;
+import top.redeimperio.imperiolobby.listeners.PlayerChatListener;
 import top.redeimperio.imperiolobby.listeners.PlayerJoinListener;
 import top.redeimperio.imperiolobby.listeners.PlayerMoveListener;
 
@@ -26,6 +27,7 @@ public final class ImperioLobby extends JavaPlugin {
         // Registro dos eventos
         getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
 
         // Registro dos comandos
         getCommand("lobby").setExecutor(new Lobby(getConfig()));
