@@ -10,12 +10,13 @@ import top.redeimperio.imperiolobby.commands.SetLobby;
 import top.redeimperio.imperiolobby.listeners.PlayerChatListener;
 import top.redeimperio.imperiolobby.listeners.PlayerJoinListener;
 import top.redeimperio.imperiolobby.listeners.PlayerMoveListener;
+import top.redeimperio.imperiolobby.other.LobbyScoreboard;
 
 public final class ImperioLobby extends JavaPlugin {
 
     public static ImperioLobby instance;
-
     FileConfiguration config;
+
     @Override
     public void onEnable() {
         instance = this;
@@ -24,10 +25,13 @@ public final class ImperioLobby extends JavaPlugin {
         ConsoleCommandSender console = Bukkit.getConsoleSender();
         console.sendMessage("§aImperioLobby iniciado com sucesso");
         Bukkit.dispatchCommand(console, "difficulty peaceful");
-        // Registro dos eventos
+
+        LobbyScoreboard score = new LobbyScoreboard();
+
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(score), this);
         getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
+
 
         // Registro dos comandos
         getCommand("lobby").setExecutor(new Lobby(getConfig()));

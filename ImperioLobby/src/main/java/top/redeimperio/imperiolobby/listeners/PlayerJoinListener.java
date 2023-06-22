@@ -7,9 +7,16 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import top.redeimperio.imperiolobby.other.LobbyScoreboard;
 
 
 public class PlayerJoinListener implements Listener {
+
+    private LobbyScoreboard scoreboard;
+
+    public PlayerJoinListener(LobbyScoreboard scoreboard) {
+        this.scoreboard = scoreboard;
+    }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
@@ -38,9 +45,14 @@ public class PlayerJoinListener implements Listener {
             String prefix = getRankPrefix(highestRankPermission);
             Bukkit.broadcastMessage(prefix + " " + playerName + " §6entrou no lobby!");
         }
+
+        LobbyScoreboard score = new LobbyScoreboard();
+        score.createScoreboard();
+        score.showScoreboard(player);
     }
+
     @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent event){
+    public void onPlayerQuit(PlayerQuitEvent event) {
         event.setQuitMessage("");
     }
 
