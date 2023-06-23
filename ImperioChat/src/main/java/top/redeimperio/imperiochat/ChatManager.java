@@ -30,7 +30,7 @@ public class ChatManager implements Listener, CommandExecutor {
             // Verificar se o jogador está dentro do alcance
             if (sender.getLocation().distanceSquared(recipient.getLocation()) <= 100 * 100) {
                 // Enviar a mensagem para o jogador próximo
-                recipient.sendMessage(ImperioTags.instance.getPlayerTag(sender.getUniqueId()).getPrefix() + " " + sender.getDisplayName() + ": §7" + message);
+                recipient.sendMessage("§e[l] "+ ImperioTags.instance.getPlayerTag(sender.getUniqueId()).getPrefix() + " " + sender.getDisplayName() + ": §e" + message);
             }
         }
 
@@ -50,7 +50,7 @@ public class ChatManager implements Listener, CommandExecutor {
 
                     // Enviar a mensagem para todos os jogadores online
                     for (Player recipient : Bukkit.getOnlinePlayers()) {
-                        recipient.sendMessage("§7[G] " + ImperioTags.instance.getPlayerTag(player.getUniqueId()).getPrefix() + " " + player.getDisplayName() + ": §f" + message);
+                        recipient.sendMessage("§7[g] " + ImperioTags.instance.getPlayerTag(player.getUniqueId()).getPrefix() + " " + player.getDisplayName() + ": §7" + message);
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + "Uso incorreto! Utilize /g <mensagem>");
