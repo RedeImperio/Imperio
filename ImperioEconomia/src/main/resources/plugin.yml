@@ -5,9 +5,27 @@ commands:
   money:
     description: Verifica o saldo do jogador
     usage: /money
+    aliases:
+      - balance
+      - bal
+      - dinheiro
+      - saldo
+      - banco
+      - coins
+      - coin
   money set:
     description: Define um valor específico na conta do jogador
     usage: /money set <jogador> <saldo>
+    permission: imperio.staff
+    permission-message: "§cPor que você achou que conseguiria usar isso? Vou reportar pra Staff imediatamente!"
   money top:
     description: Verifica o top 10 mais ricos do servidor
     usage: /money top
+  money give:
+    description: Verifica o top 10 mais ricos do servidor
+    usage: /money give <jogador> <quantia>
+  moneytop:
+    description: Retorna os mais ricos
+    aliases:
+      - baltop
+      - magnata

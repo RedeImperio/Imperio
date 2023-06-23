@@ -52,6 +52,10 @@ public class ImperioEconomia extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        if(cmd.getName().equalsIgnoreCase("moneytop") && sender instanceof Player){
+            sendTopRichestPlayers((Player) sender);
+        }
         if (cmd.getName().equalsIgnoreCase("money")) {
             if (!(sender instanceof Player)) {
                 sender.sendMessage("§cEsse comando só pode ser executado por jogadores.");
@@ -60,7 +64,7 @@ public class ImperioEconomia extends JavaPlugin {
 
             Player player = (Player) sender;
 
-            if (args.length >= 2 && args[0].equalsIgnoreCase("set")) {
+            if (args.length >= 3 && args[0].equalsIgnoreCase("set")) {
                 String playerName = args[1];
                 double amount;
 
@@ -73,6 +77,19 @@ public class ImperioEconomia extends JavaPlugin {
 
                 setPlayerBalance(playerName, amount);
                 player.sendMessage("§aO saldo de §6" + playerName + "§a foi definido como §f" + amount + "§a coins.");
+                return true;
+            } else if (args.length >= 3 && args[0].equalsIgnoreCase("give")) {
+                String playerName = args[1];
+                double amount;
+
+                try {
+                    amount = Double.parseDouble(args[2]);
+                } catch (NumberFormatException e) {
+                    player.sendMessage("§cValor inválido. Use um número válido para o saldo.");
+                    return true;
+                }
+
+                giveMoney(player, playerName, amount);
                 return true;
             } else if (args.length >= 1 && args[0].equalsIgnoreCase("top")) {
                 sendTopRichestPlayers(player);
@@ -166,7 +183,39 @@ public class ImperioEconomia extends JavaPlugin {
             magnataId = newMagnataId;
             magnataBalance = maxBalance;
             String playerName = getPlayerName(magnataId);
-            Bukkit.broadcastMessage("\n§f " + playerName + "§a é o novo §6MAGNATA§a do servidor com a quantia de §f" + magnataBalance + "§a coins!\n");
+            Bukkit.broadcastMessage("\n§2[$] §f" + playerName + "§a é o novo §6MAGNATA§a do servidor com a quantia de §f" + magnataBalance + "§a coins!\n");
+        }
+    }
+
+    private void giveMoney(Player sender, String playerName, double amount) {
+        Player targetPlayer = getServer().getPlayer(playerName);
+
+        if (targetPlayer != null) {
+            UUID targetPlayerId = targetPlayer.getUniqueId();
+            UUID senderId = sender.getUniqueId();
+            double senderBalance = getPlayerBalance(senderId);
+
+            if (senderBalance < amount) {
+                sender.sendMessage("§cVocê não tem saldo suficiente para enviar essa quantia.");
+                return;
+            }
+
+            double targetBalance = getPlayerBalance(targetPlayerId);
+            targetBalance += amount;
+            senderBalance -= amount;
+
+            playerBalances.put(targetPlayerId, targetBalance);
+            playerBalances.put(senderId, senderBalance);
+
+            playerDataConfig.set(targetPlayerId.toString(), targetBalance);
+            playerDataConfig.set(senderId.toString(), senderBalance);
+
+            savePlayerBalances();
+
+            sender.sendMessage("§aVocê enviou §f" + amount + "§a coins para §6" + targetPlayer.getName() + "§a.");
+            targetPlayer.sendMessage("§aVocê recebeu §f" + amount + "§a coins de §6" + sender.getName() + "§a.");
+        } else {
+            sender.sendMessage("§cJogador não encontrado: §f" + playerName);
         }
     }
 }
