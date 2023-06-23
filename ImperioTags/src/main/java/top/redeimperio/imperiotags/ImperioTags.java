@@ -61,18 +61,18 @@ public class ImperioTags extends JavaPlugin {
     private void loadTags() {
         // Carregar as tags do arquivo de configuração ou qualquer outra fonte de dados
         // Exemplo:
-        tags.add(new Tag("ceo", "§4(CEO)"));
-        tags.add(new Tag("admin", "§c(ADM)"));
-        tags.add(new Tag("dev", "§d(DEV)"));
-        tags.add(new Tag("mod", "§2(MOD)"));
-        tags.add(new Tag("ajd", "§9(AJD)"));
-        tags.add(new Tag("builder", "§6(Builder)"));
-        tags.add(new Tag("old", "§k&0!&6(OLD)&k&0!&6"));
-        tags.add(new Tag("beta", "§1&l(BETA)&1"));
-        tags.add(new Tag("imperador", "§4(Imperador)"));
-        tags.add(new Tag("campeao", "§3(Campeão)"));
-        tags.add(new Tag("nobre", "§6(Nobre)"));
-        tags.add(new Tag("membro", "§7"));
+        tags.add(new Tag("ceo", "§0(CEO)§f", "§b"));
+        tags.add(new Tag("admin", "§c(ADM)","§fb"));
+        tags.add(new Tag("dev", "§d(DEV)","§a"));
+        tags.add(new Tag("mod", "§2(MOD)","§a"));
+        tags.add(new Tag("ajd", "§9(AJD)","§d"));
+        tags.add(new Tag("builder", "§6(Builder)","§d"));
+        tags.add(new Tag("old", "&0&k!&6(OLD)&0&k!&6","§6"));
+        tags.add(new Tag("beta", "§l§1(BETA)&l§1","§6"));
+        tags.add(new Tag("imperador", "§4(Imperador)","§6"));
+        tags.add(new Tag("campeao", "§3(Campeão)","§6"));
+        tags.add(new Tag("nobre", "§6(Nobre)","§6"));
+        tags.add(new Tag("membro", "§7","§7"));
     }
 
 }

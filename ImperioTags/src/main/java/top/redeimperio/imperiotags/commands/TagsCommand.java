@@ -23,13 +23,13 @@ public class TagsCommand implements CommandExecutor {
         List<Tag> tags = ImperioTags.instance.getTags();
 
         if (tags.isEmpty()) {
-            sender.sendMessage("Não há tags disponíveis.");
+            sender.sendMessage("§cNão há tags disponíveis.");
             return true;
         }
 
-        sender.sendMessage("Tags disponíveis:");
+        sender.sendMessage("§9Tags disponíveis:");
         for (Tag tag : tags) {
-            sender.sendMessage("- " + tag.getName());
+            sender.sendMessage("§7- " + tag.getPrefix());
         }
 
         return true;
