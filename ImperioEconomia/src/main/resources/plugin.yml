@@ -1,0 +1,7 @@
+name: ImperioEconomia
+version: '${project.version}'
+main: top.redeimperio.imperioeconomia.ImperioEconomia
+commands:
+  money:
+    description: Verifica o saldo do jogador
+    usage: /money

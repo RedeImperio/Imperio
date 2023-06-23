@@ -1,0 +1,7 @@
+name: ImperioEconomia
+version: '1.0-SNAPSHOT'
+main: top.redeimperio.imperioeconomia.ImperioEconomia
+commands:
+  money:
+    description: Verifica o saldo do jogador
+    usage: /money

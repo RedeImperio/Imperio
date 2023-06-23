@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ImperioEconomia:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ImperioEconomia_jar</output-path>
+    <root id="archive" name="ImperioEconomia.jar">
+      <element id="module-output" name="ImperioEconomia" />
+    </root>
+  </artifact>
+</component>
