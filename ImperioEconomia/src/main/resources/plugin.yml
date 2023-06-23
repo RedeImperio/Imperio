@@ -5,3 +5,9 @@ commands:
   money:
     description: Verifica o saldo do jogador
     usage: /money
+  money set:
+    description: Define um valor específico na conta do jogador
+    usage: /money set <jogador> <saldo>
+  money top:
+    description: Verifica o top 10 mais ricos do servidor
+    usage: /money top
