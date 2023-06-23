@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
+import top.redeimperio.imperiotags.ImperioTags;
 
 public class ChatManager implements Listener, CommandExecutor {
     private Plugin plugin;
@@ -29,7 +30,7 @@ public class ChatManager implements Listener, CommandExecutor {
             // Verificar se o jogador está dentro do alcance
             if (sender.getLocation().distanceSquared(recipient.getLocation()) <= 100 * 100) {
                 // Enviar a mensagem para o jogador próximo
-                recipient.sendMessage(sender.getDisplayName() + ": " + message);
+                recipient.sendMessage(ImperioTags.instance.getPlayerTag(sender.getUniqueId()).getPrefix() + " " + sender.getDisplayName() + ": §7" + message);
             }
         }
 
@@ -49,7 +50,7 @@ public class ChatManager implements Listener, CommandExecutor {
 
                     // Enviar a mensagem para todos os jogadores online
                     for (Player recipient : Bukkit.getOnlinePlayers()) {
-                        recipient.sendMessage(ChatColor.GREEN + "[GLOBAL] " + player.getDisplayName() + ": " + message);
+                        recipient.sendMessage("§7[G] " + ImperioTags.instance.getPlayerTag(player.getUniqueId()).getPrefix() + " " + player.getDisplayName() + ": §f" + message);
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + "Uso incorreto! Utilize /g <mensagem>");

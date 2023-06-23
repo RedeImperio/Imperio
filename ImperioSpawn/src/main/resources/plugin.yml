@@ -1,0 +1,12 @@
+name: ImperioSpawn
+version: '${project.version}'
+main: top.redeimperio.imperiospawn.ImperioSpawn
+commands:
+  setspawn:
+    description: Define a posição do spawn
+    usage: /setspawn
+    permission: "imperio.staff"
+    permission-message: "§cVocê não tem permissao pra fazer isso, espertinho!"
+  spawn:
+    description: Teleporta para o spawn
+    usage: /spawn

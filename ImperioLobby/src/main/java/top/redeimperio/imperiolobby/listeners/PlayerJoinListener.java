@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import top.redeimperio.imperiolobby.other.LobbyScoreboard;
+import top.redeimperio.imperiotags.ImperioTags;
 
 
 public class PlayerJoinListener implements Listener {
@@ -49,6 +50,9 @@ public class PlayerJoinListener implements Listener {
         LobbyScoreboard score = new LobbyScoreboard();
         score.createScoreboard();
         score.showScoreboard(player);
+
+        String playerTag = ImperioTags.instance.getPlayerTag(player.getUniqueId()).getPrefix();
+        player.setPlayerListName(playerTag + " " + player.getName());
     }
 
     @EventHandler

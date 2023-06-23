@@ -23,7 +23,7 @@ public class PlayerChatListener implements Listener {
 
         // Verifica se o jogador possui uma tag
         if (playerTag != null) {
-            String formattedMessage = playerTag.getPrefix() + " " + playerName + ": §7" + message;
+            String formattedMessage = playerTag.getPrefix() + " " + playerName + ": §f" + message;
             event.setCancelled(true);
             Bukkit.broadcastMessage(formattedMessage);
         }

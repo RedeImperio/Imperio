@@ -17,7 +17,7 @@ public class LobbyScoreboard {
         for (Player player : Bukkit.getOnlinePlayers()) {
             ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
             scoreboard = scoreboardManager.getNewScoreboard();
-            objective = scoreboard.registerNewObjective("lobby", "dummy", "§l§6IMPERIO");
+            objective = scoreboard.registerNewObjective("lobby", "dummy", "§6§lIMPERIO");
             objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
             Score score0 = objective.getScore("");
@@ -26,7 +26,7 @@ public class LobbyScoreboard {
             Score score1 = objective.getScore(" ");
             score1.setScore(7);
 
-            Score score2 = objective.getScore("Jogador: §7" + ImperioTags.instance.getPlayerTag(player.getUniqueId()).getPrefix() + " " + player.getName());
+            Score score2 = objective.getScore("Rank: §7" + ImperioTags.instance.getPlayerTag(player.getUniqueId()).getPrefix());
             score2.setScore(6);
 
             Score score3 = objective.getScore("Online: §a" + Bukkit.getOnlinePlayers().size());
