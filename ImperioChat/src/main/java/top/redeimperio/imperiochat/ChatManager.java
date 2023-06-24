@@ -12,6 +12,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import top.redeimperio.imperiotags.ImperioTags;
+import top.redeimperio.imperiotags.Medal;
 import top.redeimperio.imperiotags.Tag;
 
 public class ChatManager implements Listener, CommandExecutor {
@@ -32,7 +33,9 @@ public class ChatManager implements Listener, CommandExecutor {
             if (sender.getLocation().distanceSquared(recipient.getLocation()) <= 100 * 100) {
                 // Enviar a mensagem para o jogador próximo
                 Tag tag = ImperioTags.instance.getPlayerTag(sender.getUniqueId());
-                recipient.sendMessage("§e[l] "+ tag.getPrefix() + " " + sender.getDisplayName() + ": §e" + message);
+                String medal = ImperioTags.instance.getPlayerMedal(sender.getUniqueId()).getPrefix();
+
+                recipient.sendMessage("§e[l] " + medal + " " + tag.getPrefix() + " " + sender.getDisplayName() + ": §e" + message);
             }
         }
 
@@ -53,7 +56,8 @@ public class ChatManager implements Listener, CommandExecutor {
                     // Enviar a mensagem para todos os jogadores online
                     for (Player recipient : Bukkit.getOnlinePlayers()) {
                         Tag tag = ImperioTags.instance.getPlayerTag(player.getUniqueId());
-                        recipient.sendMessage("§7[g] " + tag.getPrefix() + " " + player.getDisplayName() + ": " + tag.getChatColor() + message);
+                        String medal = ImperioTags.instance.getPlayerMedal(player.getUniqueId()).getPrefix();
+                        recipient.sendMessage("§7[g] " + medal + " " + tag.getPrefix() + " " + player.getDisplayName() + ": " + tag.getChatColor() + message);
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + "Uso incorreto! Utilize /g <mensagem>");

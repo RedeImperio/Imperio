@@ -1,9 +1,11 @@
 package top.redeimperio.imperiorandomstuff;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,6 +24,8 @@ public class ImperioRandomStuff extends JavaPlugin implements CommandExecutor, L
         getCommand("regras").setExecutor(this);
         getCommand("aplicar").setExecutor(this);
         getCommand("vip").setExecutor(this);
+
+        Bukkit.getPluginManager().registerEvents(this, this);
     }
 
     @Override
@@ -62,4 +66,12 @@ public class ImperioRandomStuff extends JavaPlugin implements CommandExecutor, L
         return false;
     }
 
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e){
+        if(e.getPlayer().hasPermission("imperio.staff")){
+            e.getPlayer().setDisplayName(e.getPlayer().getName() + "*");
+        }else{
+            e.getPlayer().setDisplayName(e.getPlayer().getName());
+        }
+    }
 }

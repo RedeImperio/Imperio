@@ -13,3 +13,9 @@ commands:
   tags:
     description: Retorna a lista de tags
     usage: /tags
+  medal:
+    description: Comando para definir a tag do jogador
+    usage: /medal <nome>
+  medals:
+    description: Retorna a lista de tags
+    usage: /tags
