@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import top.redeimperio.imperiotags.ImperioTags;
 import top.redeimperio.imperiotags.Tag;
+import top.redeimperio.imperiotags.Medal;
 
 public class PlayerChatListener implements Listener {
     @EventHandler
@@ -15,15 +16,18 @@ public class PlayerChatListener implements Listener {
         String playerName = player.getName();
         String message = event.getMessage();
 
-        // Obtém a instância do plugin de tags
-        ImperioTags tagsPlugin = (ImperioTags) Bukkit.getPluginManager().getPlugin("ImperioTags");
 
         // Obtém a tag do jogador
-        Tag playerTag = tagsPlugin.getPlayerTag(player.getUniqueId());
+        Tag playerTag = ImperioTags.instance.getPlayerTag(player.getUniqueId());
+        Medal playerMedal = ImperioTags.instance.getPlayerMedal(player.getUniqueId());
+
+        String medal = playerMedal.getPrefix();
+
+        if(playerMedal == null) { medal = "";}
 
         // Verifica se o jogador possui uma tag
         if (playerTag != null) {
-            String formattedMessage = playerTag.getPrefix() + " " + playerName + ": §f" + message;
+            String formattedMessage = medal + playerTag.getPrefix() + " " + playerName + ": §f" + message;
             event.setCancelled(true);
             Bukkit.broadcastMessage(formattedMessage);
         }

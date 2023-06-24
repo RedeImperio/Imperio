@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="ImperioTags">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/ImperioTags.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../ImperioTags/out/artifacts/ImperioTags_jar/ImperioTags.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
