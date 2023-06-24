@@ -30,7 +30,7 @@ public class MedalsCommand implements CommandExecutor {
 
         sender.sendMessage("§9Insignias disponíveis:");
         for (Medal medal : medals) {
-            sender.sendMessage("§7- " + medal.getPrefix());
+            sender.sendMessage("§7- " + medal.getPrefix() + " " + medal.getName());
         }
 
         return true;
