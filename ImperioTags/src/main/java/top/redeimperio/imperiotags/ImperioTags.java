@@ -148,6 +148,7 @@ public class ImperioTags extends JavaPlugin implements Listener {
 
     public void reloadTags() {
         tags.clear();
+        medals.clear();
         loadTags();
     }
 
