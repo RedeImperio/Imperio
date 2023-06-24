@@ -1,12 +1,13 @@
 package top.redeimperio.imperiotags;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import top.redeimperio.imperiotags.commands.MedalCommand;
-import top.redeimperio.imperiotags.commands.MedalsCommand;
-import top.redeimperio.imperiotags.commands.TagCommand;
-import top.redeimperio.imperiotags.commands.TagsCommand;
+import top.redeimperio.imperiotags.commands.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,13 +15,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class ImperioTags extends JavaPlugin {
+public class ImperioTags extends JavaPlugin implements Listener {
 
     private List<Tag> tags = new ArrayList<>();
     private List<Medal> medals = new ArrayList<>();
     private FileConfiguration playerTagsConfig;
     public static ImperioTags instance;
 
+    public Tag defaultTag;
     @Override
     public void onEnable() {
         instance = this;
@@ -37,6 +39,10 @@ public class ImperioTags extends JavaPlugin {
 
         getCommand("medal").setExecutor(new MedalCommand());
         getCommand("medals").setExecutor(new MedalsCommand());
+
+        getCommand("reloadtags").setExecutor(new ReloadTagsCommand());
+
+        Bukkit.getPluginManager().registerEvents(this, this);
     }
 
     public void setPlayerTag(UUID playerId, String tagName) {
@@ -140,12 +146,24 @@ public class ImperioTags extends JavaPlugin {
         }
     }
 
+    public void reloadTags() {
+        tags.clear();
+        loadTags();
+    }
+
     private void savePlayerTagsConfig() {
         try {
             File playerTagsFile = new File("D:\\Development\\Trivalent\\ImperioMC\\Database\\playertags.yml");
             playerTagsConfig.save(playerTagsFile);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @EventHandler
+    void onPlayerJoin(PlayerJoinEvent event){
+        if(getPlayerTag(event.getPlayer().getUniqueId()) == null){
+            setPlayerTag(event.getPlayer().getUniqueId(), "default");
         }
     }
 }
