@@ -1,0 +1,7 @@
+name: ImperioCleaner
+version: '1.0-SNAPSHOT'
+main: top.redeimperio.imperiocleaner.ImperioCleaner
+commands:
+  limpar:
+    description: Remove instantaneamente os itens do chão.
+    usage: /limpar

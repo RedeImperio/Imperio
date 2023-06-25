@@ -1,0 +1,7 @@
+name: ImperioCleaner
+version: '${project.version}'
+main: top.redeimperio.imperiocleaner.ImperioCleaner
+commands:
+  limpar:
+    description: Remove instantaneamente os itens do chão.
+    usage: /limpar

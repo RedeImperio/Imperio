@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ImperioCleaner:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ImperioCleaner_jar</output-path>
+    <root id="archive" name="ImperioCleaner.jar">
+      <element id="module-output" name="ImperioCleaner" />
+    </root>
+  </artifact>
+</component>
