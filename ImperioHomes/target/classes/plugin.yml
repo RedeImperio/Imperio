@@ -1,0 +1,19 @@
+name: ImperioHomes
+version: 1.0
+main: top.redeimperio.imperiohomes.ImperioHomes
+author: lucasof
+description: Plugin de homes da RedeImperio
+
+commands:
+  sethome:
+    description: Define uma casa
+    usage: /sethome <nomedacasa>
+  home:
+    description: Teleporta para uma casa
+    usage: /home <nomedacasa>
+  delhome:
+    description: Deleta uma casa
+    usage: /delhome <nomedacasa>
+  homes:
+    description: Lista suas casas
+    usage: /homes

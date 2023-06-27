@@ -35,15 +35,15 @@ public class ImperioCleaner extends JavaPlugin {
 
     private void startCleanupTask() {
         BukkitRunnable task = new BukkitRunnable() {
-            int countdown = 300;
+            int countdown = 600;
 
             @Override
             public void run() {
                 if (countdown == 300) {
                     Bukkit.broadcastMessage("§c(!) Os itens serão removidos do chão em 5 minutos!");
                 } else if (countdown == 60) {
-                    Bukkit.broadcastMessage("§c(!) Os itens serão removidos do chão em 1 minuto!");
-                } else if (countdown <= 3) {
+                    Bukkit.broadcastMessage("\n§c(!) Os itens serão removidos do chão em 1 minuto!\n");
+                } else if (countdown <= 3 && countdown> 0) {
                     Bukkit.broadcastMessage("§c(!) Os itens serão removidos do chão em " + countdown + " segundos!");
                 }
 
@@ -51,6 +51,7 @@ public class ImperioCleaner extends JavaPlugin {
                     removeItemsFromGround();
                     Bukkit.broadcastMessage("§c(!) Os itens foram removidos do chão!");
                     cancelCleanupTask();
+                    startCleanupTask();
                 } else {
                     countdown--;
                 }
