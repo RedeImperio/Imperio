@@ -118,12 +118,12 @@ public class ImperioHomes extends JavaPlugin {
             }
 
             if (!hasPlayerHome(player, homeName)) {
-                player.sendMessage("§cA casa §6" + homeName + "§c não existe.");
+                player.sendMessage("§cA casa §6'" + homeName + "'§c não existe.");
                 return true;
             }
 
             deletePlayerHome(player, homeName);
-            player.sendMessage("§aA casa §6" + homeName + "§a foi deletada.");
+            player.sendMessage("§aA casa §6'" + homeName + "'§a foi deletada.");
             return true;
         }
 
@@ -141,10 +141,10 @@ public class ImperioHomes extends JavaPlugin {
                 return true;
             }
 
-            player.sendMessage(ChatColor.YELLOW + "Suas homes:");
+            player.sendMessage( "§aSuas homes:");
 
             for (String homeName : homes.keySet()) {
-                player.sendMessage(ChatColor.YELLOW + "- " + homeName);
+                player.sendMessage( "§f- §a" + homeName);
             }
 
             return true;
