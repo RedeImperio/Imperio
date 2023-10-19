@@ -15,7 +15,7 @@ Sinta-se livre para fazer alterações e auxiliar no desenvolvimento da rede. N�
 ## Como contribuir?
 Comece fazendo um fork do projéto para o seu perfil, clique em "fork" no canto superior direito.<br>
 Depois clone o repositório do seu perfil, você pode fazer isso com o seguinte comando em seu terminal:<br><br>
-```git clone https://github.com/seu-usuario/Imperio.git```<br>
+```git clone https://github.com/redeimperio/Imperio.git```<br>
 
 Faça as alterações que achar necessárias, depois certifique-se de fazer um commit dessas alteraçôes usando <br>```git commit -M "Resumo da sua alteração"```.<br><br>
 
